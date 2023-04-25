@@ -1,0 +1,58 @@
+INICI  ====================================
+amb img afegida
+GIT folder:
+76.591 bytes (135 KB en el disco) para 29 ítems
+
+➜  esborrar git:(main) ✗ git gc
+Enumerando objetos: 6, listo.
+Contando objetos: 100% (6/6), listo.
+Compresión delta usando hasta 8 hilos
+Comprimiendo objetos: 100% (4/4), listo.
+Escribiendo objetos: 100% (6/6), listo.
+Total 6 (delta 0), reusados 6 (delta 0), pack-reusados 0
+➜  esborrar git:(main) ✗ git count-objects -v
+count: 0
+size: 0
+in-pack: 6
+packs: 1
+size-pack: 38
+prune-packable: 0
+garbage: 0
+size-garbage: 0
+
+ADD Big img of 736 KB
+GIT folder: 78.082 bytes (143 KB en el disco) para 32 ítems
+
+esborrar folder: 1.537.410 bytes (1,6 MB en el disco) para 47 ítems
+
+➜  esborrar git:(main) ✗ git gc
+Enumerando objetos: 9, listo.
+Contando objetos: 100% (9/9), listo.
+Compresión delta usando hasta 8 hilos
+Comprimiendo objetos: 100% (7/7), listo.
+Escribiendo objetos: 100% (9/9), listo.
+Total 9 (delta 1), reusados 5 (delta 0), pack-reusados 0
+➜  esborrar git:(main) ✗ git count-objects -v
+count: 0
+size: 0
+in-pack: 9
+packs: 1
+size-pack: 676
+prune-packable: 0
+garbage: 0
+size-garbage: 0
+
+Delete Big IMG in GITHUB =========
+esborrar: 1.535.565 bytes (1,6 MB en el disco) para 39 ítems
+gut: 738.896 bytes (815 KB en el disco) para 35 ítems
+
+➜  esborrar git:(main) ✗ git count-objects -v
+count: 0
+size: 0
+in-pack: 10
+packs: 1
+size-pack: 677
+prune-packable: 0
+garbage: 0
+size-garbage: 0
+
