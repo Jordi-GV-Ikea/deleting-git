@@ -4,7 +4,7 @@
 git gc
 git count-objects -v
 
-git verify-pack -v .git/objects/pack/pack-177246d8fbd89ec5f1addb7e58ebe322ef27caac.idx \
+git verify-pack -v .git/objects/pack/pack-9c5b3aa615fa0cbcb3d528a16ffca49fceb84118.idx\
   | sort -k 3 -n \
   | tail -3
 
@@ -13,7 +13,7 @@ git rev-list --objects --all | grep XXXXX
 git log --oneline --branches -- FILE_TO_DELETE
 
 git filter-branch --index-filter \
-  'git rm --cached --ignore-unmatch FILE_TO_DELETE' -- ZZZZZZZZ^..
+  'git rm --cached --ignore-unmatch t' -- 9e268b8^..
 
 rm -Rf .git/refs/original
 rm -Rf .git/logs/

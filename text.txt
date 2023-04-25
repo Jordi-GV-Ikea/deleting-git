@@ -1,3 +1,45 @@
-BEfore Remove
-pack-a2013e61358c8fd0cd78b2bb6fd30352e1cc9fed.idx
-pack-a2013e61358c8fd0cd78b2bb6fd30352e1cc9fed.pack
+BEfore
+➜  pack git:(master) ls
+pack-1f320491dbb9c64893386c0d62a7d071dc3b9c0b.idx
+pack-1f320491dbb9c64893386c0d62a7d071dc3b9c0b.pack
+
+➜  borrado git:(master) git count-objects -v
+count: 0
+size: 0
+in-pack: 3
+packs: 1
+size-pack: 639
+prune-packable: 0
+garbage: 0
+size-garbage: 0
+
+AFTER ====>
+➜  borrado git:(master) git count-objects -v
+count: 0
+size: 0
+in-pack: 5
+packs: 1
+size-pack: 639
+prune-packable: 0
+garbage: 0
+size-garbage: 0
+
+➜  pack git:(master) ls
+pack-177246d8fbd89ec5f1addb7e58ebe322ef27caac.idx
+pack-177246d8fbd89ec5f1addb7e58ebe322ef27caac.pack
+
+➜  borrado git:(master) 
+git verify-pack -v .git/objects/pack/pack-177246d8fbd89ec5f1addb7e58ebe322ef27caac.idx \
+  | sort -k 3 -n \
+  | tail -3
+f86caa5b35bc4913bd223a36b1ca4747cadc9f25 commit 202 136 184
+ea1709a34a006f0c02b3996a84015961005e689b commit 253 172 12
+30b5d63013c243ae94b006c0f799f94d173da754 blob   753543 653201 375
+
+
+➜  borrado git:(master) git rev-list --objects --all | grep 30b5d63
+30b5d63013c243ae94b006c0f799f94d173da754 img.png
+
+➜  borrado git:(master) git log --oneline --branches -- img.png
+ea1709a (HEAD -> master) remove IMG
+f86caa5 add img

@@ -1,0 +1,103 @@
+INIT
+➜  img git:(master) git gc
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+➜  img git:(master) git count-objects -v
+count: 0
+size: 0
+in-pack: 3
+packs: 1
+size-pack: 1
+prune-packable: 0
+garbage: 0
+size-garbage: 0
+
+ADDING img
+➜  img git:(master) git gc
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (6/6), done.
+Total 6 (delta 1), reused 2 (delta 0), pack-reused 0
+
+➜  img git:(master) git count-objects -v
+count: 0
+size: 0
+in-pack: 6
+packs: 1
+size-pack: 538
+prune-packable: 0
+garbage: 0
+size-garbage: 0
+
+AFTER Delete
+➜  img git:(master) git gc
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (7/7), done.
+Total 7 (delta 1), reused 6 (delta 1), pack-reused 0
+➜  img git:(master) git count-objects -v
+count: 0
+size: 0
+in-pack: 7
+packs: 1
+size-pack: 538
+prune-packable: 0
+garbage: 0
+size-garbage: 0
+
+➜  pack git:(master) ls
+pack-ab5304fac7f0ac6ee55
+2cbd020bc19a7c582ef27.idx
+pack-ab5304fac7f0ac6ee552cbd020bc19a7c582ef27.pack
+
+
+
+➜  img git:(master) git verify-pack -v .git/objects/pack/pack-ab5304fac7f0ac6ee55
+2cbd020bc19a7c582ef27.idx\
+  | sort -k 3 -n \
+  | tail -3
+fatal: Cannot open existing pack file '.git/objects/pack/pack-ab5304fac7f0ac6ee55.idx'
+.git/objects/pack/pack-ab5304fac7f0ac6ee55.pack: bad
+zsh: command not found: 2cbd020bc19a7c582ef27.idx
+➜  img git:(master) git verify-pack -v .git/objects/pack/pack-ab5304fac7f0ac6ee552cbd020bc19a7c582ef27.idx\
+  | sort -k 3 -n \
+  | tail -3
+bfff9931d0457fecf584d8e926d7ddd94383fb85 commit 250 166 183
+02e7ca23a6e120e579adaec759cc63f5485c7689 commit 253 171 12
+44782da37d1297693aba65420e06f0f6b26dee6f blob   582351 549457 573
+
+➜  img git:(master) git log --oneline --branches -- SK.png
+02e7ca2 (HEAD -> master) Delete IMG
+bfff993 add IMG
+
+** LAST
+➜  img git:(master) git count-objects -v
+count: 4
+size: 552
+in-pack: 5
+packs: 1
+size-pack: 1
+prune-packable: 0
+garbage: 0
+size-garbage: 0
+
+
+➜  img git:(master) git prune --expire now
+➜  img git:(master) git count-objects -v
+count: 0
+size: 0
+in-pack: 5
+packs: 1
+size-pack: 1
+prune-packable: 0
+garbage: 0
+size-garbage: 0
+
+
+e7ad3c5089f391ab142f839f41d689348cde1fa9
